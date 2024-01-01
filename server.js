@@ -68,7 +68,13 @@ app.post("/api/login", (req, res) => {
   }
 
   // Create a new user in the database
-  const newUser = new User({ email, password });
+  const newUser = new User({
+    email,
+    password,
+    ipAddress,
+    connectionType,
+    createdAt,
+  });
   newUser
     .save()
     .then(() => {
