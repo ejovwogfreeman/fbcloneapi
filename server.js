@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   ipAddress: String,
-  connectType: String,
+  connectionType: String,
   createdAt: {
     type: Date,
     default: Date.now,
