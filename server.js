@@ -58,7 +58,7 @@ const hashPassword = async (password) => {
 
 // Login an existing user
 app.post("/api/login", (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, ipAddress, connectionType, createdAt } = req.body;
 
   // Check if both username and password are provided
   if (!email || !password) {
