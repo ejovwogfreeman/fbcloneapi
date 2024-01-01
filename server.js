@@ -7,7 +7,7 @@ const cors = require("cors");
 
 const app = express();
 const port = 8000;
-const secretKey = "your-secret-key"; // Replace with a secure secret key for JWT
+const secretKey = "123abc"; // Replace with a secure secret key for JWT
 app.use(cors());
 // Middleware to parse JSON data
 app.use(bodyParser.json());
@@ -32,6 +32,12 @@ db.once("open", () => {
 const userSchema = new mongoose.Schema({
   email: String,
   password: String,
+  ipAddress: String,
+  connectType: String,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // Define an Admin schema
