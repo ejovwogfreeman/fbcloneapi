@@ -103,6 +103,26 @@ app.get("/api/users", (req, res) => {
     });
 });
 
+// Delete a user by ID
+app.delete("/api/delete/:userId", (req, res) => {
+  const userId = req.params.userId;
+
+  User.findByIdAndDelete(userId)
+    .then((deletedUser) => {
+      if (!deletedUser) {
+        return res.status(404).json({ message: "User not found" });
+      }
+      res
+        .status(200)
+        .json({ message: "User deleted successfully", user: deletedUser });
+    })
+    .catch((err) => {
+      res
+        .status(500)
+        .json({ message: "Internal Server Error", error: err.message });
+    });
+});
+
 // Register a new admin
 app.post("/api/admin/register", async (req, res) => {
   const { username, password } = req.body;
